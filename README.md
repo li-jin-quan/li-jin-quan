@@ -5,7 +5,7 @@
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://hackerone.com"><img src="https://img.shields.io/badge/Bug%20Bounty-HackerOne-494649?style=flat-square&logo=hackerone&logoColor=white"></a>
   <a href="https://immunefi.com"><img src="https://img.shields.io/badge/Immunefi-Web3%20Security-CC66FF?style=flat-square&logo=web3.js&logoColor=white"></a>
-  <img src="https://img.shields.io/badge/CISP-Certified%20Info%20Security%20Professional-4C9F38?style=flat-square">
+  <img src="https://img.shields.io/badge/White_Hat-Registered-4C9F38?style=flat-square">
 </p>
 
 ---
@@ -15,7 +15,6 @@
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
 - 🕵️ **Bug bounty hunter** — reported **high / critical** vulnerabilities on **HackerOne** and **Immunefi** (Web3 / smart-contract security), verified on international platforms.
-- 🎖️ **CISP** — Certified Information Security Professional.
 - 🦀 **Rust deep-diver** — using Rust since the 1.0 era; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
 - 🏗️ **10+ years** experience since 2016: chip test systems, security tooling, microservices architecture.
@@ -52,7 +51,9 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 **Security**
 ![HackerOne](https://img.shields.io/badge/HackerOne-494649?style=flat-square&logo=hackerone&logoColor=white)
 ![Immunefi](https://img.shields.io/badge/Immunefi-CC66FF?style=flat-square&logo=web3.js&logoColor=white)
-![CISP](https://img.shields.io/badge/CISP-Certified-4C9F38?style=flat-square)
+![OWASP](https://img.shields.io/badge/OWASP-Top%2010-000000?style=flat-square)
+![Web3](https://img.shields.io/badge/Web3-Smart%20Contract%20Audit-F16822?style=flat-square&logo=ethereum&logoColor=white)
+![DevSecOps](https://img.shields.io/badge/DevSecOps-CI%2FCD%20Integrated-FF6F00?style=flat-square)
 
 **AI / Backend / Frontend**
 ![LLM](https://img.shields.io/badge/LLM-Private%20Deploy-412991?style=flat-square&logo=openai&logoColor=white)
