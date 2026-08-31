@@ -8,6 +8,10 @@
   <img src="https://img.shields.io/badge/White_Hat-Registered-4C9F38?style=flat-square">
 </p>
 
+<p align="center">
+  📄 <a href="https://github.com/li-jin-quan/resume">View my Resume</a> · <a href="https://li-jin-quan.github.io/resume/">Online Preview</a>
+</p>
+
 ---
 
 ## 🛡️ About Me
