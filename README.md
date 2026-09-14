@@ -4,7 +4,7 @@
 <p align="center">
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
-  <img src="https://img.shields.io/badge/Upstream%20Security-15%20PRs%20%C2%B7%2011%20in%20review-blueviolet?style=flat-square">
+  <img src="https://img.shields.io/badge/Upstream%20Security-16%20PRs%20%C2%B7%2012%20in%20review-blueviolet?style=flat-square">
   <img src="https://img.shields.io/badge/GHSA-reporter%20credit-lightgrey?style=flat-square&logo=github">
 </p>
 
@@ -18,7 +18,7 @@
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **15 upstream security PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **4 are merged into `sonos/tract`** and 11 are under review. Every one is a real code change, not a typo fix — see the list below.
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **16 upstream security PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **4 are merged into `sonos/tract`** and 12 are under review. Every one is a real code change, not a typo fix — see the list below.
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -44,7 +44,7 @@ upstream (CVE requested, not yet assigned); draft advisories aren't public, so t
 will 404 until the maintainers publish it.
 
 <details>
-<summary><b>Under review — 11 PRs across the Rust AI/ML ecosystem</b> (click to expand)</summary>
+<summary><b>Under review — 12 PRs across the Rust AI/ML ecosystem</b> (click to expand)</summary>
 
 | Repo | PR | What it fixes | Size |
 |---|---|---|---|
