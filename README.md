@@ -59,6 +59,7 @@ will 404 until the maintainers publish it.
 | zurawiki/tiktoken-rs | [#166](https://github.com/zurawiki/tiktoken-rs/pull/166) | `_decode_native_and_split` out-of-bounds | +62 |
 | jturner314/ndarray-npy | [#106](https://github.com/jturner314/ndarray-npy/pull/106) | bound allocations by data actually present | +262 |
 | KeeperHub/agentic-wallet | [#40](https://github.com/KeeperHub/agentic-wallet/pull/40) | *feature work (MCP pre-execution tool), not a security fix* | +4827 |
+| zip-rs/zip2 | [#984](https://github.com/zip-rs/zip2/pull/984) | symlink entries: guard `with_capacity` against huge declared size (CWE-770) | +211 |
 
 These are all awaiting maintainer review — none has been merged yet.
 
