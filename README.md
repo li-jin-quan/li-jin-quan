@@ -4,7 +4,7 @@
 <p align="center">
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
-  <img src="https://img.shields.io/badge/Upstream%20Security-19%20PRs%20%C2%B7%205%20merged-blueviolet?style=flat-square">
+  <img src="https://img.shields.io/badge/Upstream%20Security-19%20PRs%20%C2%B7%206%20merged-blueviolet?style=flat-square">
   <img src="https://img.shields.io/badge/GHSA-reporter%20credit-lightgrey?style=flat-square&logo=github">
 </p>
 
@@ -18,7 +18,7 @@
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **19 upstream security PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **5 are merged** — 4 in `sonos/tract`, 1 in `zip-rs/zip2` — and 12 are under review. Every one is a real code change, not a typo fix — see the list below.
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **19 upstream security PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **6 are merged** — 4 in `sonos/tract`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn` — and 11 are under review. Every one is a real code change, not a typo fix — see the list below.
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -30,7 +30,7 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 
 ## 🚀 Open-Source Security Work
 
-### Merged — 5 PRs across 2 repositories
+### Merged — 6 PRs across 3 repositories
 
 | PR | What it fixes |
 |---|---|
@@ -39,13 +39,14 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 | [#2796](https://github.com/sonos/tract/pull/2796) | `fix(tensorflow): return errors instead of panicking` — malformed `TensorProto` panicked instead of erroring (CWE-248) |
 | [#2814](https://github.com/sonos/tract/pull/2814) | `Add missing sign checks on loader dims casts` (onnx / tflite) — negative dims became huge `usize` after the cast |
 | [#984](https://github.com/zip-rs/zip2/pull/984) | `zip-rs/zip2` — a symlink entry with a huge **declared** size drove `with_capacity` before a single byte was read (CWE-770). Merged through GitHub's merge queue on 2026-09-14; **not in a release yet** |
+| [#5667](https://github.com/tracel-ai/burn/pull/5667) | `tracel-ai/burn` — a sparse file reported a 3.4 TB size, bypassing the metadata-based length check and driving a multi-TB allocation in the MNIST reader; item counts are now capped at the split size (CWE-770). Merged 2026-09-14; **not in a release yet** |
 
 **GHSA-6ffw-f7m6-gpxj** — I'm credited as the reporter. The advisory is currently in **draft**
 upstream (CVE requested, not yet assigned); draft advisories aren't public, so the GHSA link
 will 404 until the maintainers publish it.
 
 <details>
-<summary><b>Under review — 12 PRs across the Rust AI/ML ecosystem</b> (click to expand)</summary>
+<summary><b>Under review — 11 PRs across the Rust AI/ML ecosystem</b> (click to expand)</summary>
 
 | Repo | PR | What it fixes | Size |
 |---|---|---|---|
@@ -60,7 +61,6 @@ will 404 until the maintainers publish it.
 | zurawiki/tiktoken-rs | [#166](https://github.com/zurawiki/tiktoken-rs/pull/166) | `_decode_native_and_split` out-of-bounds | +62 |
 | jturner314/ndarray-npy | [#106](https://github.com/jturner314/ndarray-npy/pull/106) | bound allocations by data actually present | +262 |
 | KeeperHub/agentic-wallet | [#40](https://github.com/KeeperHub/agentic-wallet/pull/40) | *feature work (MCP pre-execution tool), not a security fix* | +4827 |
-| tracel-ai/burn | [#5667](https://github.com/tracel-ai/burn/pull/5667) | MNIST reader: bound buffers by the bytes the file actually holds (CWE-770) | +75 |
 
 These are all awaiting maintainer review — none has been merged yet.
 
@@ -78,7 +78,7 @@ A community fix ([#1683](https://github.com/RustSec/rustsec/pull/1683)) had alre
 so mine was **closed as a duplicate — it was never merged**. #1683 is still open upstream, so
 the bug itself remains unfixed today.
 
-Listed for the record. The merged work is the tract PRs above.
+Listed for the record. The merged work is the PRs listed above.
 
 ---
 
@@ -111,6 +111,7 @@ it's marketing.
 **Security**
 ![tract](https://img.shields.io/badge/sonos%2Ftract-4%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![zip2](https://img.shields.io/badge/zip-rs%2Fzip2-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
+![burn](https://img.shields.io/badge/tracel--ai%2Fburn-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![GHSA](https://img.shields.io/badge/GHSA-reporter-lightgrey?style=flat-square&logo=github)
 ![OWASP](https://img.shields.io/badge/OWASP-Top%2010-000000?style=flat-square)
 ![Web3](https://img.shields.io/badge/Web3-Smart%20Contract%20Audit-F16822?style=flat-square&logo=ethereum&logoColor=white)
