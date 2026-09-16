@@ -18,7 +18,7 @@
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **21 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **6 are merged** — 4 in `sonos/tract`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn` — and 13 are under review (two are non-security — one feature, one test fix). Every one is a real code change, not a typo fix — see the list below.
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **21 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **6 are merged** — 4 in `sonos/tract`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn` — and 12 are under review (two are non-security — one feature, one test fix). Every one is a real code change, not a typo fix — see the list below.
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -46,7 +46,7 @@ upstream (CVE requested, not yet assigned); draft advisories aren't public, so t
 will 404 until the maintainers publish it.
 
 <details>
-<summary><b>Under review — 13 PRs across upstream projects</b> (click to expand)</summary>
+<summary><b>Under review — 12 PRs across upstream projects</b> (click to expand)</summary>
 
 | Repo | PR | What it fixes | Size |
 |---|---|---|---|
@@ -61,10 +61,11 @@ will 404 until the maintainers publish it.
 | zurawiki/tiktoken-rs | [#166](https://github.com/zurawiki/tiktoken-rs/pull/166) | `_decode_native_and_split` out-of-bounds | +62 |
 | jturner314/ndarray-npy | [#106](https://github.com/jturner314/ndarray-npy/pull/106) | bound allocations by data actually present | +262 |
 | KeeperHub/agentic-wallet | [#40](https://github.com/KeeperHub/agentic-wallet/pull/40) | *feature work (MCP pre-execution tool), not a security fix* | +4827 |
-| zip-rs/zip2 | [#992](https://github.com/zip-rs/zip2/pull/992) | legacy decoders reserved from the *declared* uncompressed size (ZIP64 extra field) | +135 |
 | KeeperHub/cli | [#114](https://github.com/KeeperHub/cli/pull/114) | *test fix (Windows `HOME` / `USERPROFILE` isolation), not a security fix* | +31 |
 
 These are all awaiting maintainer review — none has been merged yet.
+
+One PR was **closed without merging**: [zip2#992](https://github.com/zip-rs/zip2/pull/992) (legacy decoders reserved from the *declared* uncompressed size). The maintainer preferred [#991](https://github.com/zip-rs/zip2/pull/991), which **caps** the pre-allocation rather than removing it, for performance. Fair call — #991 is the better fix.
 
 </details>
 
