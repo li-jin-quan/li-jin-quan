@@ -60,8 +60,8 @@ will 404 until the maintainers publish it.
 | ExpHP/npyz | [#84](https://github.com/ExpHP/npyz/pull/84) | `read_header` vs untrusted `header_size` | +16 |
 | zurawiki/tiktoken-rs | [#166](https://github.com/zurawiki/tiktoken-rs/pull/166) | `_decode_native_and_split` out-of-bounds | +62 |
 | jturner314/ndarray-npy | [#106](https://github.com/jturner314/ndarray-npy/pull/106) | bound allocations by data actually present | +262 |
-| KeeperHub/agentic-wallet | [#40](https://github.com/KeeperHub/agentic-wallet/pull/40) | *feature work (MCP pre-execution tool), not a security fix* | +4827 |
-| KeeperHub/cli | [#114](https://github.com/KeeperHub/cli/pull/114) | *test fix (Windows `HOME` / `USERPROFILE` isolation), not a security fix* | +31 |
+| KeeperHub/agentic-wallet | [#40](https://github.com/KeeperHub/agentic-wallet/pull/40) | *feature work (MCP pre-execution tool), not a security fix* | +202 |
+| KeeperHub/cli | [#114](https://github.com/KeeperHub/cli/pull/114) | *test fix (Windows `HOME` / `USERPROFILE` isolation), not a security fix* | +31 / −13 |
 
 These are all awaiting maintainer review — none has been merged yet.
 
