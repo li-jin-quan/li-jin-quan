@@ -4,7 +4,7 @@
 <p align="center">
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
-  <img src="https://img.shields.io/badge/Upstream%20PRs-23%20%C2%B7%207%20merged-blueviolet?style=flat-square">
+  <img src="https://img.shields.io/badge/Upstream%20PRs-24%20%C2%B7%207%20merged-blueviolet?style=flat-square">
   <img src="https://img.shields.io/badge/GHSA-reporter%20credit-lightgrey?style=flat-square&logo=github">
 </p>
 
@@ -18,7 +18,7 @@
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **23 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **7 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn` — and 13 are under review (three are non-security: one feature, two test-only changes). Every one is a real code change, not a typo fix — see the list below.
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **24 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **7 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn` — and 14 are under review (four are non-security: one feature, two test-only changes, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below.
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -47,7 +47,7 @@ upstream (CVE requested, not yet assigned); draft advisories aren't public, so t
 will 404 until the maintainers publish it.
 
 <details>
-<summary><b>Under review — 13 PRs across upstream projects</b> (click to expand)</summary>
+<summary><b>Under review — 14 PRs across upstream projects</b> (click to expand)</summary>
 
 | Repo | PR | What it fixes | Size |
 |---|---|---|---|
@@ -60,6 +60,7 @@ will 404 until the maintainers publish it.
 | ExpHP/npyz | [#84](https://github.com/ExpHP/npyz/pull/84) | `read_header` vs untrusted `header_size` | +16 |
 | contentauth/c2pa-rs | [#2664](https://github.com/contentauth/c2pa-rs/pull/2664) | OCSP `good` response outside its validity window was reported as `revoked` | +31 / −8 |
 | contentauth/c2pa-rs | [#2662](https://github.com/contentauth/c2pa-rs/pull/2662) | regression test for a signing cert with no Organization attribute | +116 |
+| contentauth/c2pa-rs | [#2665](https://github.com/contentauth/c2pa-rs/pull/2665) | *documentation follow-up requested in maintainer review — not a security fix* | +5 |
 | zurawiki/tiktoken-rs | [#166](https://github.com/zurawiki/tiktoken-rs/pull/166) | `_decode_native_and_split` out-of-bounds | +62 |
 | jturner314/ndarray-npy | [#106](https://github.com/jturner314/ndarray-npy/pull/106) | bound allocations by data actually present | +262 |
 | KeeperHub/agentic-wallet | [#40](https://github.com/KeeperHub/agentic-wallet/pull/40) | *feature work (MCP pre-execution tool), not a security fix* | +202 |
