@@ -18,7 +18,7 @@
 ## 📬 Contact
 
 - **Telegram (fastest)** — [@vuln7_lab](https://t.me/vuln7_lab)
-- **Email** — see my [resume page](https://li-jin-quan.github.io/resume/) or the sidebar on this profile
+- **Email** — `18617339965@163.com`
 - **Resume** — [github.com/li-jin-quan/resume](https://github.com/li-jin-quan/resume) (PDF + online preview)
 
 Building something in AI security, or need a second pair of eyes on a Rust / ML supply-chain
