@@ -6,11 +6,23 @@
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
   <img src="https://img.shields.io/badge/Upstream%20PRs-24%20%C2%B7%207%20merged-blueviolet?style=flat-square">
   <img src="https://img.shields.io/badge/GHSA-reporter%20credit-lightgrey?style=flat-square&logo=github">
+  <a href="https://t.me/vuln7_lab"><img src="https://img.shields.io/badge/Telegram-%40vuln7__lab-26A5E4?style=flat-square&logo=telegram&logoColor=white"></a>
 </p>
 
 <p align="center">
   📄 <a href="https://github.com/li-jin-quan/resume">View my Resume</a> · <a href="https://li-jin-quan.github.io/resume/">Online Preview</a>
 </p>
+
+---
+
+## 📬 Contact
+
+- **Telegram (fastest)** — [@vuln7_lab](https://t.me/vuln7_lab)
+- **Email** — see my [resume page](https://li-jin-quan.github.io/resume/) or the sidebar on this profile
+- **Resume** — [github.com/li-jin-quan/resume](https://github.com/li-jin-quan/resume) (PDF + online preview)
+
+Building something in AI security, or need a second pair of eyes on a Rust / ML supply-chain
+issue? DM me on Telegram — I read everything, and I answer security reports first.
 
 ---
 
