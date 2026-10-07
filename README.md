@@ -30,7 +30,7 @@ issue? DM me on Telegram — I read everything, and I answer security reports fi
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **24 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **8 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato` — and 13 are under review (four are non-security: one feature, two test-only changes, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below.
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **24 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **8 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato` — and 12 are under review (four are non-security: one feature, two test-only changes, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below.
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -60,7 +60,7 @@ upstream (CVE requested, not yet assigned); draft advisories aren't public, so t
 will 404 until the maintainers publish it.
 
 <details>
-<summary><b>Under review — 13 PRs across upstream projects</b> (click to expand)</summary>
+<summary><b>Under review — 12 PRs across upstream projects</b> (click to expand)</summary>
 
 | Repo | PR | What it fixes | Size |
 |---|---|---|---|
@@ -70,7 +70,6 @@ will 404 until the maintainers publish it.
 | not-fl3/nanoserde | [#172](https://github.com/not-fl3/nanoserde/pull/172) | `DeBin` vs untrusted length prefixes | +110 |
 | finalfusion/finalfusion-rust | [#203](https://github.com/finalfusion/finalfusion-rust/pull/203) | format readers vs untrusted length prefixes | +272 |
 | ExpHP/npyz | [#84](https://github.com/ExpHP/npyz/pull/84) | `read_header` vs untrusted `header_size` | +16 |
-| contentauth/c2pa-rs | [#2664](https://github.com/contentauth/c2pa-rs/pull/2664) | OCSP `good` response outside its validity window was reported as `revoked` | +31 / −8 |
 | contentauth/c2pa-rs | [#2662](https://github.com/contentauth/c2pa-rs/pull/2662) | regression test for a signing cert with no Organization attribute | +116 |
 | contentauth/c2pa-rs | [#2665](https://github.com/contentauth/c2pa-rs/pull/2665) | *documentation follow-up requested in maintainer review — not a security fix* | +5 |
 | zurawiki/tiktoken-rs | [#166](https://github.com/zurawiki/tiktoken-rs/pull/166) | `_decode_native_and_split` out-of-bounds | +62 |
@@ -80,7 +79,11 @@ will 404 until the maintainers publish it.
 
 These are all awaiting maintainer review — none has been merged yet.
 
-One PR was **closed without merging**: [zip2#992](https://github.com/zip-rs/zip2/pull/992) (legacy decoders reserved from the *declared* uncompressed size). The maintainer preferred [#991](https://github.com/zip-rs/zip2/pull/991), which **caps** the pre-allocation rather than removing it, for performance. Fair call — #991 is the better fix.
+Two PRs were **closed without merging**.
+
+One was [zip2#992](https://github.com/zip-rs/zip2/pull/992) (legacy decoders reserved from the *declared* uncompressed size). The maintainer preferred [#991](https://github.com/zip-rs/zip2/pull/991), which **caps** the pre-allocation rather than removing it, for performance. Fair call — #991 is the better fix.
+
+The other was [c2pa-rs#2664](https://github.com/contentauth/c2pa-rs/pull/2664): an OCSP response saying `good` outside its validity window was reported as `revoked`. The maintainers decided that is exactly what C2PA 2.4 §15.9.2 requires, so it is not a bug in the SDK. I read the spec text myself and they are right — so I closed the code question there and took the underlying one upstream: [c2pa-org/specifications#131](https://github.com/c2pa-org/specifications/issues/131).
 
 </details>
 
