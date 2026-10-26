@@ -5,7 +5,7 @@
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
   <img src="https://img.shields.io/badge/Upstream%20PRs-26%20%C2%B7%208%20merged-blueviolet?style=flat-square">
-  <img src="https://img.shields.io/badge/GHSA-advisory%20published-4C9F38?style=flat-square&logo=github">
+  <img src="https://img.shields.io/badge/GHSA-2%20advisory%20credits-4C9F38?style=flat-square&logo=github">
   <a href="https://t.me/vuln7_lab"><img src="https://img.shields.io/badge/Telegram-%40vuln7__lab-26A5E4?style=flat-square&logo=telegram&logoColor=white"></a>
 </p>
 
@@ -30,7 +30,7 @@ issue? DM me on Telegram — I read everything, and I answer security reports fi
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **26 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **8 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato` — and 14 are under review, including a RUSTSEC advisory submission to `rustsec/advisory-db` (five are non-security: one feature, two test-only changes, two documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below.
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **26 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **8 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato` — and 14 are under review, including a RUSTSEC advisory submission to `rustsec/advisory-db` (five are non-security: one feature, two test-only changes, two documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below. Two published GitHub Security Advisories carry my credit: one as **reporter** (`sonos/tract`), one as **remediation developer** (`zip-rs/zip2`).
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -51,11 +51,13 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 | [#2795](https://github.com/sonos/tract/pull/2795) | `fix(data): check tensor shape arithmetic before allocation` — overflow in shape math before the allocation (CWE-190 / CWE-770) |
 | [#2796](https://github.com/sonos/tract/pull/2796) | `fix(tensorflow): return errors instead of panicking` — malformed `TensorProto` panicked instead of erroring (CWE-248) |
 | [#2814](https://github.com/sonos/tract/pull/2814) | `Add missing sign checks on loader dims casts` (onnx / tflite) — negative dims became huge `usize` after the cast |
-| [#984](https://github.com/zip-rs/zip2/pull/984) | `zip-rs/zip2` — a symlink entry with a huge **declared** size drove `with_capacity` before a single byte was read (CWE-770). Merged through GitHub's merge queue on 2026-09-14; **not in a release yet** |
+| [#984](https://github.com/zip-rs/zip2/pull/984) | `zip-rs/zip2` — a symlink entry with a huge **declared** size drove `with_capacity` before a single byte was read (CWE-770). Merged through GitHub's merge queue on 2026-09-14; **not in a release yet** — it became the fix behind [GHSA-q7v9-x93c-xqv3](https://github.com/zip-rs/zip2/security/advisories/GHSA-q7v9-x93c-xqv3) |
 | [#5667](https://github.com/tracel-ai/burn/pull/5667) | `tracel-ai/burn` — a sparse file reported a 3.4 TB size, bypassing the metadata-based length check and driving a multi-TB allocation in the MNIST reader; item counts are now capped at the split size (CWE-770). Merged 2026-09-14; **not in a release yet** |
 | [#167](https://github.com/daac-tools/vibrato/pull/167) | `daac-tools/vibrato` — `matrix.def` declared a connection-matrix size that was allocated up front, so a ~1 KB dictionary could reserve gigabytes (CWE-770 / CWE-400). The allocation now tracks what the file actually contains. Merged 2026-10-03 |
 
 **[GHSA-6ffw-f7m6-gpxj](https://github.com/sonos/tract/security/advisories/GHSA-6ffw-f7m6-gpxj)** — I'm credited as the reporter. **Published 2026-10-09**; the CVE ID has been requested and is pending GitHub's CNA queue. It covers an unbounded allocation in the String branch of `tract-nnef::tensors::read_tensor` (CWE-770): a 3-byte crafted input forced a 128 MiB pre-allocation before a single payload byte was read — a ~4×10⁷ amplification. Patched in `0.21.18` / `0.22.4` / `0.23.7`.
+
+**[GHSA-q7v9-x93c-xqv3](https://github.com/zip-rs/zip2/security/advisories/GHSA-q7v9-x93c-xqv3)** — **High 7.5**, published 2026-10-22. I'm credited as the **remediation developer** (the reporter and finder are `kirk-baird` and `secstant-sigp` — credit where it's due). It covers the symlink branch of `ZipArchive::extract_internal()`, which allocated its buffer from the declared size before reading any entry data (CWE-400 / CWE-789): a 112-byte archive aborts the extracting process with SIGABRT. My PR #984 is the fix; patched in `9.0.0`. No CVE assigned yet.
 
 <details>
 <summary><b>Under review — 14 PRs across upstream projects</b> (click to expand)</summary>
@@ -139,7 +141,7 @@ it's marketing.
 ![zip2](https://img.shields.io/badge/zip-rs%2Fzip2-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![burn](https://img.shields.io/badge/tracel--ai%2Fburn-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![vibrato](https://img.shields.io/badge/daac--tools%2Fvibrato-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
-![GHSA](https://img.shields.io/badge/GHSA-advisory%20published-4C9F38?style=flat-square&logo=github)
+![GHSA](https://img.shields.io/badge/GHSA-2%20advisory%20credits-4C9F38?style=flat-square&logo=github)
 ![OWASP](https://img.shields.io/badge/OWASP-Top%2010-000000?style=flat-square)
 ![Web3](https://img.shields.io/badge/Web3-Smart%20Contract%20Audit-F16822?style=flat-square&logo=ethereum&logoColor=white)
 ![DevSecOps](https://img.shields.io/badge/DevSecOps-CI%2FCD%20Integrated-FF6F00?style=flat-square)
