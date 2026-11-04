@@ -4,7 +4,7 @@
 <p align="center">
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
-  <img src="https://img.shields.io/badge/Upstream%20PRs-27%20%C2%B7%2010%20merged-blueviolet?style=flat-square">
+  <img src="https://img.shields.io/badge/Upstream%20PRs-27%20%C2%B7%2011%20merged-blueviolet?style=flat-square">
   <img src="https://img.shields.io/badge/GHSA-2%20advisory%20credits-4C9F38?style=flat-square&logo=github">
   <img src="https://img.shields.io/badge/CVE-CVE--2026--115909-red?style=flat-square">
   <a href="https://t.me/vuln7_lab"><img src="https://img.shields.io/badge/Telegram-%40vuln7__lab-26A5E4?style=flat-square&logo=telegram&logoColor=white"></a>
@@ -31,7 +31,7 @@ issue? DM me on Telegram — I read everything, and I answer security reports fi
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **27 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **10 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato`, 2 in `contentauth/c2pa-rs` — and 13 are under review, including two RUSTSEC advisory submissions to `rustsec/advisory-db` (three are non-security: one feature, one test-only change, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below. Two published GitHub Security Advisories carry my credit: one as **reporter** (`sonos/tract`), one as **remediation developer** (`zip-rs/zip2`).
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **27 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **11 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato`, 2 in `contentauth/c2pa-rs`, 1 advisory in `rustsec/advisory-db` — and 12 are under review, including one more RUSTSEC advisory submission (four are non-security: one advisory, one feature, one test-only change, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below. Two published GitHub Security Advisories carry my credit: one as **reporter** (`sonos/tract`), one as **remediation developer** (`zip-rs/zip2`).
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -43,7 +43,7 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 
 ## 🚀 Open-Source Security Work
 
-### Merged — 10 PRs across 6 repositories
+### Merged — 11 PRs across 7 repositories
 
 | PR | What it fixes |
 |---|---|
@@ -57,20 +57,20 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 | [#167](https://github.com/daac-tools/vibrato/pull/167) | `daac-tools/vibrato` — `matrix.def` declared a connection-matrix size that was allocated up front, so a ~1 KB dictionary could reserve gigabytes (CWE-770 / CWE-400). The allocation now tracks what the file actually contains. Merged 2026-10-03 |
 | [#2662](https://github.com/contentauth/c2pa-rs/pull/2662) | `contentauth/c2pa-rs` — **regression test only, not a security fix**: covers signing with a certificate that has no `Organization` attribute. Merged 2026-10-29 |
 | [#2665](https://github.com/contentauth/c2pa-rs/pull/2665) | `contentauth/c2pa-rs` — **documentation only**, requested by the maintainer during review of #2664: records that a missing *and* a non-UTF-8 `Organization` attribute both become `None`. Merged 2026-10-30 |
+| [#3451](https://github.com/rustsec/advisory-db/pull/3451) | `rustsec/advisory-db` — **advisory authorship, not a code fix**: authored the RUSTSEC advisory documenting the `zip` symlink unbounded-allocation issue (CVE-2026-115909 / GHSA-q7v9-x93c-xqv3, patched in `9.0.0`; the underlying fix is #984 above). Merged 2026-11-02 |
 
 **[GHSA-6ffw-f7m6-gpxj](https://github.com/sonos/tract/security/advisories/GHSA-6ffw-f7m6-gpxj)** — I'm credited as the reporter. **Published 2026-10-09**; the CVE ID has been requested and is pending GitHub's CNA queue. It covers an unbounded allocation in the String branch of `tract-nnef::tensors::read_tensor` (CWE-770): a 3-byte crafted input forced a 128 MiB pre-allocation before a single payload byte was read — a ~4×10⁷ amplification. Patched in `0.21.18` / `0.22.4` / `0.23.7`.
 
 **[GHSA-q7v9-x93c-xqv3](https://github.com/zip-rs/zip2/security/advisories/GHSA-q7v9-x93c-xqv3)** — **High 7.5**, published 2026-10-22. I'm credited as the **remediation developer** (the reporter and finder are `kirk-baird` and `secstant-sigp` — credit where it's due). It covers the symlink branch of `ZipArchive::extract_internal()`, which allocated its buffer from the declared size before reading any entry data (CWE-400 / CWE-789): a 112-byte archive aborts the extracting process with SIGABRT. My PR #984 is the fix; patched in `9.0.0`. **CVE-2026-115909** was assigned on 2026-10-26 and picked up by OSV on 2026-10-27.
 
 <details>
-<summary><b>Under review — 13 PRs across upstream projects</b> (click to expand)</summary>
+<summary><b>Under review — 12 PRs across upstream projects</b> (click to expand)</summary>
 
 | Repo | PR | What it fixes | Size |
 |---|---|---|---|
 | huggingface/candle | [#3970](https://github.com/huggingface/candle/pull/3970) | ggml: unbounded allocations from untrusted values | +126 |
 | huggingface/candle | [#3962](https://github.com/huggingface/candle/pull/3962) | npy: unbounded allocation when reading arrays | +38 |
 | huggingface/candle | [#3961](https://github.com/huggingface/candle/pull/3961) | pickle: unbounded allocation in binary protocol | +53 |
-| rustsec/advisory-db | [#3451](https://github.com/rustsec/advisory-db/pull/3451) | RUSTSEC advisory for `zip` — unbounded symlink-target allocation, CVE-2026-115909 / GHSA-q7v9 (patched in 9.0.0) | +1 file |
 | rustsec/advisory-db | [#3338](https://github.com/rustsec/advisory-db/pull/3338) | RUSTSEC unmaintained advisory for finalfusion (CWE-770) — maintainer engaged upstream privately | +43 |
 | not-fl3/nanoserde | [#172](https://github.com/not-fl3/nanoserde/pull/172) | `DeBin` vs untrusted length prefixes | +110 |
 | finalfusion/finalfusion-rust | [#203](https://github.com/finalfusion/finalfusion-rust/pull/203) | format readers vs untrusted length prefixes | +272 |
@@ -144,6 +144,7 @@ it's marketing.
 ![burn](https://img.shields.io/badge/tracel--ai%2Fburn-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![vibrato](https://img.shields.io/badge/daac--tools%2Fvibrato-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![c2pa-rs](https://img.shields.io/badge/contentauth%2Fc2pa--rs-2%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
+![rustsec](https://img.shields.io/badge/rustsec%2Fadvisory--db-1%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white)
 ![GHSA](https://img.shields.io/badge/GHSA-2%20advisory%20credits-4C9F38?style=flat-square&logo=github)
 ![CVE](https://img.shields.io/badge/CVE-CVE--2026--115909-red?style=flat-square)
 ![OWASP](https://img.shields.io/badge/OWASP-Top%2010-000000?style=flat-square)
