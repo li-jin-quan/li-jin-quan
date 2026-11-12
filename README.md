@@ -4,9 +4,10 @@
 <p align="center">
   <a href="https://github.com/li-jin-quan"><img src="https://img.shields.io/badge/GitHub-li--jin--quan-181717?style=flat-square&logo=github&logoColor=white"></a>
   <a href="https://github.com/sonos/tract/pulls?q=is%3Apr+author%3Ali-jin-quan+is%3Amerged"><img src="https://img.shields.io/badge/sonos%2Ftract-4%20security%20PRs%20merged-4C9F38?style=flat-square&logo=rust&logoColor=white"></a>
-  <img src="https://img.shields.io/badge/Upstream%20PRs-27%20%C2%B7%2011%20merged-blueviolet?style=flat-square">
+  <img src="https://img.shields.io/badge/Upstream%20PRs-28%20%C2%B7%2012%20merged-blueviolet?style=flat-square">
   <img src="https://img.shields.io/badge/GHSA-2%20advisory%20credits-4C9F38?style=flat-square&logo=github">
   <img src="https://img.shields.io/badge/CVE-CVE--2026--115909-red?style=flat-square">
+  <img src="https://img.shields.io/badge/RUSTSEC-2%20advisories%20authored-4C9F38?style=flat-square&logo=rust&logoColor=white">
   <a href="https://t.me/vuln7_lab"><img src="https://img.shields.io/badge/Telegram-%40vuln7__lab-26A5E4?style=flat-square&logo=telegram&logoColor=white"></a>
 </p>
 
@@ -31,7 +32,7 @@ issue? DM me on Telegram — I read everything, and I answer security reports fi
 
 Offensive-security-minded engineer who builds and breaks systems for a living — then ships the fixes.
 
-- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **27 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **11 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato`, 2 in `contentauth/c2pa-rs`, 1 advisory in `rustsec/advisory-db` — and 12 are under review, including one more RUSTSEC advisory submission (four are non-security: one advisory, one feature, one test-only change, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below. Two published GitHub Security Advisories carry my credit: one as **reporter** (`sonos/tract`), one as **remediation developer** (`zip-rs/zip2`).
+- 🕵️ **Security researcher** — independent audits of the Rust AI/ML supply chain: **28 upstream PRs** submitted (CWE-770 / CWE-190 / CWE-248 class), of which **12 are merged** — 4 in `sonos/tract`, 1 in `huggingface/hf-hub`, 1 in `zip-rs/zip2`, 1 in `tracel-ai/burn`, 1 in `daac-tools/vibrato`, 2 in `contentauth/c2pa-rs`, 2 advisories in `rustsec/advisory-db` — and 12 are under review (four are non-security: one unmaintained advisory, one feature, one test-only change, one documentation-only). Every one is a substantive change to upstream code, not a typo fix — see the list below. Two published GitHub Security Advisories carry my credit: one as **reporter** (`sonos/tract`), one as **remediation developer** (`zip-rs/zip2`). Plus a full private-disclosure cycle on `eazip`: report → maintainer fix → signed credit in the release notes → RUSTSEC advisory authored.
 - 🌐 **International bounty experience** — registered researcher on HackerOne (`0xNuoyaArk`) and Immunefi (Web3 / smart-contract security); familiar with report writing and triage workflows end to end.
 - 🦀 **Rust deep-diver** — using Rust since 2016; strong on ownership, borrowing, `unsafe`, FFI, and system-level security.
 - 🤖 **AI-native** — private LLM deployment, AI coding assistants, RAG-based customer service, DevSecOps.
@@ -43,7 +44,7 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 
 ## 🚀 Open-Source Security Work
 
-### Merged — 11 PRs across 7 repositories
+### Merged — 12 PRs across 7 repositories
 
 | PR | What it fixes |
 |---|---|
@@ -58,10 +59,20 @@ Offensive-security-minded engineer who builds and breaks systems for a living �
 | [#2662](https://github.com/contentauth/c2pa-rs/pull/2662) | `contentauth/c2pa-rs` — **regression test only, not a security fix**: covers signing with a certificate that has no `Organization` attribute. Merged 2026-10-29 |
 | [#2665](https://github.com/contentauth/c2pa-rs/pull/2665) | `contentauth/c2pa-rs` — **documentation only**, requested by the maintainer during review of #2664: records that a missing *and* a non-UTF-8 `Organization` attribute both become `None`. Merged 2026-10-30 |
 | [#3451](https://github.com/rustsec/advisory-db/pull/3451) | `rustsec/advisory-db` — **advisory authorship, not a code fix**: authored the RUSTSEC advisory documenting the `zip` symlink unbounded-allocation issue (CVE-2026-115909 / GHSA-q7v9-x93c-xqv3; assigned **RUSTSEC-2026-0429**, patched in `9.0.0`; the underlying fix is #984 above). Merged 2026-11-02 |
+| [#3554](https://github.com/rustsec/advisory-db/pull/3554) | `rustsec/advisory-db` — **advisory authorship, not a code fix**: authored the RUSTSEC advisory documenting the `eazip` symlink-target validation issue on Windows (**RUSTSEC-2026-0503**, CVSS 7.9, patched in `0.2.7`; see the eazip disclosure cycle below). Merged 2026-11-12 within ~2.5 hours of submission |
 
 **[GHSA-6ffw-f7m6-gpxj](https://github.com/sonos/tract/security/advisories/GHSA-6ffw-f7m6-gpxj)** — I'm credited as the reporter. **Published 2026-10-09**; no CVE ID has been issued for this advisory as of 2026-11-04. It covers an unbounded allocation in the String branch of `tract-nnef::tensors::read_tensor` (CWE-770): a 3-byte crafted input forced a 128 MiB pre-allocation before a single payload byte was read — a ~4×10⁷ amplification. Patched in `0.21.18` / `0.22.4` / `0.23.7`.
 
 **[GHSA-q7v9-x93c-xqv3](https://github.com/zip-rs/zip2/security/advisories/GHSA-q7v9-x93c-xqv3)** — **High 7.5**, published 2026-10-22. I'm credited as the **remediation developer** (the reporter and finder are `kirk-baird` and `secstant-sigp` — credit where it's due). It covers the symlink branch of `ZipArchive::extract_internal()`, which allocated its buffer from the declared size before reading any entry data (CWE-400 / CWE-789): a 112-byte archive aborts the extracting process with SIGABRT. My PR #984 is the fix; patched in `9.0.0`. **CVE-2026-115909** was assigned on 2026-10-26 and picked up by OSV on 2026-10-27.
+
+### eazip — private report, full disclosure cycle
+
+**[a1phyr/eazip](https://github.com/a1phyr/eazip)** — found that `validate_symlink()` checked the symlink's *name* where its *target* was intended, so symlink targets containing backslash or NUL bytes passed validation. On Windows a crafted archive could create symlinks that resolve outside the extraction directory (zip-slip class, CVSS 7.9, privilege-escalation).
+
+- **2026-11-06** — privately reported to the maintainer with a minimal reproduction.
+- **2026-11-09** — maintainer confirmed, fixed and shipped `0.2.7`. The release notes carry a signed credit: *"Thanks @li-jin-quan for reporting it!"*
+- **2026-11-12** — with the maintainer's blessing I authored the RUSTSEC advisory myself: [PR #3554](https://github.com/rustsec/advisory-db/pull/3554) merged into `rustsec/advisory-db` within ~2.5 hours, assigned **[RUSTSEC-2026-0503](https://github.com/rustsec/advisory-db/blob/main/crates/eazip/RUSTSEC-2026-0503.md)**.
+
 
 <details>
 <summary><b>Under review — 12 PRs across upstream projects</b> (click to expand)</summary>
